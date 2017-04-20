@@ -1,0 +1,880 @@
+Last login: Wed Apr  5 17:19:09 on ttys005
+172-16-43-175:~ vipinarora$  ssh pa1230@hpc.nyu.edu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           WARNING:  UNAUTHORIZED PERSONS ........ DO NOT PROCEED
+           ~~~~~~~   ~~~~~~~~~~~~~~~~~~~~          ~~~~~~~~~~~~~~
+ This computer system is operated by New York University (NYU) and may be
+ accessed only by authorized users.  Authorized users are granted specific,
+ limited privileges in their use of the system.  The data and programs
+ in this system may not be accessed, copied, modified, or disclosed without
+ prior approval of NYU.  Access and use, or causing access and use, of this
+ computer system by anyone other than as permitted by NYU are strictly pro-
+ hibited by NYU and by law and may subject an unauthorized user, including
+ unauthorized employees, to criminal and civil penalties as well as NYU-
+ initiated disciplinary proceedings.  The use of this system is routinely
+ monitored and recorded, and anyone accessing this system consents to such
+ monitoring and recording.  Questions regarding this access policy should be
+ directed (by e-mail) to askits@nyu.edu or (by phone) to 212-998-3333.
+ Questions on other topics should be directed to COMMENT (by email) or to
+ 212-998-3333 by phone.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+pa1230@hpc.nyu.edu's password: 
+Last login: Wed Apr  5 17:20:17 2017 from 172-16-43-175.dynapool.nyu.edu
+[pa1230@hpc ~]$ ssh dumbo
+Password: 
+Password: 
+Last login: Thu Mar  9 12:02:46 2017 from hpc.es.its.nyu.edu
+Rocks 6.2 (SideWinder)
+Profile built 16:54 24-Aug-2015
+
+Kickstarted 16:58 24-Aug-2015
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   THIS NYU-OPERATED FACILITY MAY BE ACCESSED ONLY BY AUTHORIZED USERS.
+               UNAUTHORIZED PERSONS ... TYPE 'exit' NOW
+ See https://wikis.nyu.edu/display/NYUHPC/NYU+HPC+Access+Policy for details
+ of the access policy. Questions regarding the access policy should be
+ directed (by e-mail) to security@nyu.edu or (by phone) to 212-998-3333
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                  WELCOME TO
+***************************************************************************
+     _____          ___           ___          _____          ___     
+    /  /::\        /__/\         /__/\        /  /::\        /  /\    
+   /  /:/\:\       \  \:\       |  |::\      /  /:/\:\      /  /::\   
+  /  /:/  \:\       \  \:\      |  |:|:\    /  /:/~/::\    /  /:/\:\  
+ /__/:/ \__\:|  ___  \  \:\   __|__|:|\:\  /__/:/ /:/\:|  /  /:/  \:\ 
+ \  \:\ /  /:/ /__/\  \__\:\ /__/::::| \:\ \  \:\/:/~/:/ /__/:/ \__\:\
+  \  \:\  /:/  \  \:\ /  /:/ \  \:\~~\__\/  \  \::/ /:/  \  \:\ /  /:/
+   \  \:\/:/    \  \:\  /:/   \  \:\         \  \:\/:/    \  \:\  /:/ 
+    \  \::/      \  \:\/:/     \  \:\         \  \::/      \  \:\/:/  
+     \__\/        \  \::/       \  \:\         \__\/        \  \::/   
+                   \__\/         \__\/                       \__\/    
+
+***************************************************************************
+                 https://wikis.nyu.edu/display/NYUHPC/Dumbo
+***************************************************************************
+
+Filesystem	Environment	Backed up?	Allocation	Current Usage
+Space		Variable	/ Flushed?	Space / Files	Space(%) / Files(%)	
+
+/home           $HOME           Yes/No          7.0TB / 453M    4.2TB(63%) / 8.0M(2%)
+/scratch        $SCRATCH        NO/Yes          5.0TB / 1M      44KB(0%) / 11(0%)
+/archive account hasn't been created for you. Please contact HPC support at hpc@nyu.edu
+See this report at any time with 'myquota'
+
+[pa1230@login-1-1 ~]$ 
+[pa1230@login-1-1 ~]$ module load python/gnu/3.4.4
+[pa1230@login-1-1 ~]$ export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
+[pa1230@login-1-1 ~]$ export PYTHONHASHSEED=0
+[pa1230@login-1-1 ~]$ export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
+[pa1230@login-1-1 ~]$ 
+[pa1230@login-1-1 ~]$ pyspark2
+Python 3.4.4 (default, Feb 29 2016, 12:00:41) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-11)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel).
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@5bdc9099{HTTP/1.1}{0.0.0.0:4040}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@3d41d07f: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@205d4a65{HTTP/1.1}{0.0.0.0:4041}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@1f5dbf41: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4041. Attempting port 4042.
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@3731cca7{HTTP/1.1}{0.0.0.0:4042}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@491c1978: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4042. Attempting port 4043.
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@480592e3{HTTP/1.1}{0.0.0.0:4043}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@13c1f28b: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4043. Attempting port 4044.
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@19cc2f5c{HTTP/1.1}{0.0.0.0:4044}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@664020c7: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4044. Attempting port 4045.
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED ServerConnector@3c046178{HTTP/1.1}{0.0.0.0:4045}: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN component.AbstractLifeCycle: FAILED org.spark_project.jetty.server.Server@69f11d: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.spark_project.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.spark_project.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.spark_project.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.spark_project.jetty.server.Server.doStart(Server.java:366)
+	at org.spark_project.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.apache.spark.ui.JettyUtils$.org$apache$spark$ui$JettyUtils$$connect$1(JettyUtils.scala:306)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.ui.JettyUtils$$anonfun$5.apply(JettyUtils.scala:316)
+	at org.apache.spark.util.Utils$$anonfun$startServiceOnPort$1.apply$mcVI$sp(Utils.scala:2175)
+	at scala.collection.immutable.Range.foreach$mVc$sp(Range.scala:160)
+	at org.apache.spark.util.Utils$.startServiceOnPort(Utils.scala:2166)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:316)
+	at org.apache.spark.ui.WebUI.bind(WebUI.scala:140)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at org.apache.spark.SparkContext$$anonfun$10.apply(SparkContext.scala:450)
+	at scala.Option.foreach(Option.scala:257)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:450)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:240)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:236)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+17/04/05 17:38:50 WARN util.Utils: Service 'SparkUI' could not bind on port 4045. Attempting port 4046.
+
+
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.0.0.cloudera1
+      /_/
+
+Using Python version 3.4.4 (default, Feb 29 2016 12:00:41)
+SparkSession available as 'spark'.
+>>> 
+>>> 
+>>> import numpy as np
+>>> from math import sqrt
+>>> from operator import add
+>>> from pyspark.mllib.clustering import KMeans, KMeansModel
+>>> csvfile = sc.textFile('/user/ecc290/lab9/sensordatasmall/part-00000')
+>>> sensordata = csvfile.map(lambda line: line.split(','))
+>>> sdfilt = sensordata.filter(lambda x: np.count_nonzero(np.array([int(x[6]), int(x[7]), int(x[8])]))>0)
+>>> sdfilt.count()
+45674                                                                           
+>>> vso = sdfilt.map(lambda x: np.array([int(x[6]), int(x[7]), int(x[8])]))
+>>> def error(point):
+...     center = clusters.centers[clusters.predict(point)]
+...     return sqrt(sum([x**2 for x in (point - center)]))
+... 
+>>> for i in range(1,11):
+...         clusters = KMeans.train(vso, i, maxIterations=10, initializationMode="random")
+...         WSSSE = vso.map(lambda point: error(point)).reduce(add)
+...         print("Within Set Sum of Squared Error, k = " + str(i) + ": "  + str(WSSSE))
+... 
+17/04/05 17:40:21 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+17/04/05 17:40:21 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeRefBLAS
+Within Set Sum of Squared Error, k = 1: 752528.8779927501                       
+Within Set Sum of Squared Error, k = 2: 425451.94074582454                      
+Within Set Sum of Squared Error, k = 3: 346484.4157931241                       
+Within Set Sum of Squared Error, k = 4: 309153.3634158449                       
+Within Set Sum of Squared Error, k = 5: 273494.4844738052                       
+Within Set Sum of Squared Error, k = 6: 242268.75344783382                      
+Within Set Sum of Squared Error, k = 7: 216579.19385456815                      
+Within Set Sum of Squared Error, k = 8: 204735.4242865938                       
+Within Set Sum of Squared Error, k = 9: 182081.88469539362                      
+Within Set Sum of Squared Error, k = 10: 173788.0728587751                      
+>>> 
+>>> clusters = KMeans.train(vso, 3, maxIterations=10, initializationMode="random")
+>>> for i in range(0,len(clusters.centers)):
+...     print("cluster " + str(i) + ": " + str(clusters.centers[i]))
+... 
+cluster 0: [  4.20759633  67.15912519   4.73851639]
+cluster 1: [  6.33638241  54.19276651   9.1218227 ]
+cluster 2: [  6.62253904  17.34976239  34.95641548]
+>>> 
+>>> clusters = KMeans.train(vso, 4, maxIterations=10, initializationMode="random")
+>>> for i in range(0,len(clusters.centers)):
+...     print("cluster " + str(i) + ": " + str(clusters.centers[i]))
+... 
+cluster 0: [  8.30725   55.911125  12.07875 ]
+cluster 1: [  2.82357092  51.79557751   3.71265585]
+cluster 2: [  6.62070837  17.35649342  34.9439544 ]
+cluster 3: [  3.96689126  67.38643773   4.39324784]
+>>> 
+>>> def addclustercols(x):
+...     point = np.array([float(x[6]), float(x[7]), float(x[8])])
+...     center = clusters.centers[0]
+...     mindist = sqrt(sum([y**2 for y in (point - center)]))
+...     cl = 0
+...     for i in range(1,len(clusters.centers)):
+...         center = clusters.centers[i]
+...         distance = sqrt(sum([y**2 for y in (point - center)]))
+...         if distance < mindist:
+...             cl = i
+...             mindist = distance
+...     clcenter = clusters.centers[cl]
+...     return (int(x[0]), int(x[1]), int(x[2]), int(x[3]), int(x[4]), float(x[5]), int(x[6]), int(x[7]), int(x[8]), int(cl), float(clcenter[0]), float(clcenter[1]),  float(clcenter[2]), float(mindist))
+... 
+>>> rdd_w_clusts = sdfilt.map(lambda x: addclustercols(x))
+>>> rdd_w_clusts.map(lambda y: (y[9],1)).reduceByKey(add).top(len(clusters.centers))
+[(3, 13803), (2, 7369), (1, 8502), (0, 16000)]                                  
+>>> 
+>>> schema_sd = spark.createDataFrame(rdd_w_clusts, ('highway','sensorloc', 'sensorid', 'doy', 'dow', 'time','p_v','p_s','p_o', 'cluster', 'c_v', 'c_s', 'c_o', 'dist'))
+17/04/05 17:41:52 WARN bonecp.BoneCPConfig: Max Connections < 1. Setting to 20
+17/04/05 17:41:54 WARN bonecp.BoneCPConfig: Max Connections < 1. Setting to 20
+>>> schema_sd.createOrReplaceTempView("sd")
+>>> 
+>>> spark.sql("SELECT max(dist) FROM sd").show()
++-----------------+                                                             
+|        max(dist)|
++-----------------+
+|67.65626882842697|
++-----------------+
+
+>>> stats = spark.sql("SELECT cluster, c_v, c_s, c_o, count(*) AS num, max(dist) AS maxdist, avg(dist) AS avgdist,stddev_pop(dist) AS stdev FROM sd GROUP BY cluster, c_v, c_s, c_o ORDER BY cluster")
+>>> stats.show()
++-------+------------------+-----------------+------------------+-----+------------------+------------------+------------------+
+|cluster|               c_v|              c_s|               c_o|  num|           maxdist|           avgdist|             stdev|
++-------+------------------+-----------------+------------------+-----+------------------+------------------+------------------+
+|      0|           8.30725|        55.911125|          12.07875|16000| 23.16530817603394| 5.619975911264617|3.3789225895513737|
+|      1| 2.823570924488356|51.79557751117384|3.7126558456833685| 8502| 25.29123219107959|  4.59436343693164| 2.769880793398769|
+|      2|6.6207083729135565|17.35649341837427| 34.94395440358257| 7369| 67.65626882842697|12.404165141641524| 8.581939020369978|
+|      3|3.9668912555241618|67.38643773092807| 4.393247844671449|13803|14.670566664305097| 5.762259407004803|2.2176752754761737|
++-------+------------------+-----------------+------------------+-----+------------------+------------------+------------------+
+
+>>> def inclust(x, t):
+...     cl = x[9]
+...     c_v = x[10]
+...     c_s = x[11]
+...     c_o = x[12]
+...     distance = x[13]
+...     if float(distance) > float(t):
+...         cl = -1
+...         c_v = 0.0
+...         c_s = 0.0
+...         c_o = 0.0
+...     return (int(x[0]), int(x[1]), int(x[2]), int(x[3]), int(x[4]), float(x[5]), int(x[6]), int(x[7]), int(x[8]), int(cl), float(c_v), float(c_s), float(c_o), float(distance))
+... 
+>>> rdd_w_clusts_wnullclust = rdd_w_clusts.map(lambda x: inclust(x,20))
+>>> rdd_w_clusts_wnullclust.map(lambda y: (y[9],1)).reduceByKey(add).top(5)
+[(3, 13803), (2, 6227), (1, 8427), (0, 15824), (-1, 1393)]                      
+>>> schema_sd = spark.createDataFrame(rdd_w_clusts_wnullclust, ('highway','sensorloc', 'sensorid', 'doy', 'dow', 'time','p_v','p_s','p_o', 'cluster', 'c_v','c_s','c_o','dist'))
+>>> schema_sd.createOrReplaceTempView("sd_nc")
+>>> spark.sql("SELECT p_v, p_s, p_o FROM sd_nc WHERE cluster=-1 LIMIT 100").show(100)
++---+---+---+
+|p_v|p_s|p_o|
++---+---+---+
+|  8| 28| 18|
+|  3|  7| 54|
+|  3|  7| 54|
+|  6| 31| 17|
+|  3|  2| 79|
+|  3|  5| 68|
+|  3|  2| 79|
+|  7| 28| 18|
+|  7| 28| 18|
+|  4|  5| 72|
+|  5| 11| 55|
+|  3|  9| 58|
+|  3|  9| 58|
+|  4|  5| 51|
+|  4|  5| 57|
+|  4|  5| 51|
+|  4|  5| 57|
+|  9| 34| 18|
+|  9| 37| 23|
+|  6| 37| 20|
+|  8| 37| 19|
+|  7| 33| 19|
+|  8| 31| 18|
+|  4|  8| 56|
+|  4|  8| 56|
+|  6|  8| 54|
+|  8| 35| 20|
+|  7| 28| 18|
+|  4|  9| 54|
+|  9| 32| 21|
+|  7| 34| 18|
+|  7| 34| 18|
+|  4| 13| 59|
+|  9| 35| 23|
+|  1|  0|  0|
+|  9| 33| 22|
+|  9| 35| 24|
+|  6| 28| 17|
+|  3| 30| 15|
+|  7| 33| 21|
+|  7| 33| 16|
+|  8| 36| 16|
+|  7| 34| 22|
+|  7| 33| 22|
+|  7| 37| 20|
+|  8| 36| 16|
+|  5| 34| 15|
+|  7| 35| 21|
+|  8| 34| 18|
+|  6| 32| 15|
+|  8| 34| 20|
+|  9| 33| 20|
+|  6| 32| 20|
+|  6| 30| 17|
+|  9| 38| 23|
+|  3|  4| 50|
+|  5|  9| 56|
+|  4|  9| 56|
+|  3|  5| 51|
+|  5|  5| 56|
+|  8| 31| 19|
+|  7| 32| 19|
+|  9| 33| 20|
+|  7| 12| 60|
+|  8| 34| 17|
+|  4| 19| 14|
+|  9| 32| 21|
+|  8| 33| 18|
+|  9| 35| 18|
+|  1|  0|  0|
+|  5| 15| 57|
+|  7|  9| 54|
+|  4|  4| 63|
+|  5| 10| 54|
+|  3| 11| 64|
+|  6| 18| 63|
+|  3|  5| 69|
+|  1|  0| 67|
+|  4| 12| 56|
+|  4| 12| 56|
+|  4| 10| 71|
+|  8| 32| 17|
+| 11| 38| 23|
+|  6| 34| 13|
+|  7| 33| 15|
+|  8| 35| 18|
+|  5|  9| 58|
+|  3| 11| 54|
+|  3|  9| 54|
+|  7| 30| 14|
+|  9| 32| 20|
+|  1|  0|  0|
+| 11| 34| 24|
+|  6| 11| 61|
+|  6| 11| 61|
+|  6| 11| 61|
+|  4| 16| 15|
+|  9| 32| 20|
+|  9| 34| 19|
+|  5| 10| 56|
++---+---+---+
+
+>>> 
+>>> spark.sql("SELECT sensorid, cluster, count(*) AS num_outliers, avg(c_s) AS spdcntr, avg(dist) AS avgdist FROM sd WHERE  dist > 20 GROUP BY sensorid, cluster ORDER BY sensorid, cluster").show()
++--------+-------+------------+------------------+------------------+           
+|sensorid|cluster|num_outliers|           spdcntr|           avgdist|
++--------+-------+------------+------------------+------------------+
+|     145|      0|         176| 55.91112499999998| 21.57770300203164|
+|     145|      1|          75|51.795577511173846| 22.10371786414756|
+|     145|      2|        1142| 17.35649341837417|27.504147054210293|
++--------+-------+------------+------------------+------------------+
+
+>>> 
+>>> spark.sql("SELECT cluster, doy, time, c_v,c_s,c_o, p_v,p_s,p_o FROM sd WHERE cluster=1 and dist >20 ORDER BY dist").show()
++-------+-------+-------+-----------------+-----------------+------------------+---+---+---+
+|cluster|    doy|   time|              c_v|              c_s|               c_o|p_v|p_s|p_o|
++-------+-------+-------+-----------------+-----------------+------------------+---+---+---+
+|      1|2014328| 981.67|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 36| 15|
+|      1|2014330|1025.67|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 36| 15|
+|      1|2014328| 981.33|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 36| 15|
+|      1|2014328| 981.33|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 36| 15|
+|      1|2014328| 981.67|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 36| 15|
+|      1|2014332|  813.0|2.823570924488356|51.79557751117384|3.7126558456833685|  6| 36| 16|
+|      1|2014335| 496.67|2.823570924488356|51.79557751117384|3.7126558456833685|  4| 35| 15|
+|      1|2014332| 811.67|2.823570924488356|51.79557751117384|3.7126558456833685|  5| 33| 11|
+|      1|2014336|  438.0|2.823570924488356|51.79557751117384|3.7126558456833685|  6| 34| 13|
+|      1|2014333| 803.67|2.823570924488356|51.79557751117384|3.7126558456833685|  6| 34| 13|
+|      1|2014333|  785.0|2.823570924488356|51.79557751117384|3.7126558456833685|  6| 34| 13|
+|      1|2014331|1000.67|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 15|
+|      1|2014335| 859.33|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 15|
+|      1|2014329| 870.33|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 15|
+|      1|2014329|1107.33|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 15|
+|      1|2014335| 859.67|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 15|
+|      1|2014335| 840.33|2.823570924488356|51.79557751117384|3.7126558456833685|  8| 35| 15|
+|      1|2014337|  862.0|2.823570924488356|51.79557751117384|3.7126558456833685|  5| 34| 15|
+|      1|2014331| 938.33|2.823570924488356|51.79557751117384|3.7126558456833685|  7| 35| 16|
+|      1|2014330| 506.67|2.823570924488356|51.79557751117384|3.7126558456833685|  6| 34| 15|
++-------+-------+-------+-----------------+-----------------+------------------+---+---+---+
+only showing top 20 rows
+
+>>> 
+>>> clusters = KMeans.train(vso, 5, maxIterations=10, initializationMode="random")
+>>> rdd_w_clustsk5 = sdfilt.map(lambda x: addclustercols(x))
+>>> schema_sd = spark.createDataFrame(rdd_w_clustsk5, ('highway','sensorloc', 'sensorid', 'doy', 'dow', 'time', 'p_v', 'p_s', 'p_o', 'cluster', 'c_v', 'c_s', 'c_o', 'dist'))
+>>> schema_sd.createOrReplaceTempView("sdk5")
+>>> 
+>>> spark.sql("SELECT cluster, c_v, c_s, c_o, count(*) AS num, max(dist) AS maxdist, avg(dist) AS avgdist,stddev_pop(dist) AS stdev FROM sdk5 GROUP BY cluster, c_v, c_s, c_o ORDER BY cluster").show()
++-------+------------------+------------------+------------------+-----+------------------+-----------------+------------------+
+|cluster|               c_v|               c_s|               c_o|  num|           maxdist|          avgdist|             stdev|
++-------+------------------+------------------+------------------+-----+------------------+-----------------+------------------+
+|      0| 7.623848643266119|25.462783171521036|23.652974856858354| 4206| 35.37925829165963|8.513178214873477|5.3884512531282684|
+|      1| 8.151610602638772|57.054082966837036|11.573160584809223|16069|18.663930446303336|5.176021721566117| 2.676665423153109|
+|      2| 5.883093978332075| 12.27387251196775| 43.67246157722349| 3735|57.948687008139274|9.255463196732835| 6.765419846913491|
+|      3|2.7890869669959044| 51.85629968682245| 3.615634786798362| 8308|17.235733096488016|4.357042135418305|2.0268975393954407|
+|      4| 3.676433121019108| 67.79275477707006| 3.970541401273885|13356|13.165559365522055| 5.75607254178076|  2.05881122610746|
++-------+------------------+------------------+------------------+-----+------------------+-----------------+------------------+
+
+>>> rdd_w_clusts_wnullclustk5 = rdd_w_clustsk5.map(lambda x: inclust(x,20))
+>>> rdd_w_clusts_wnullclustk5.map(lambda y: (y[9],1)).reduceByKey(add).top(6)
+[(4, 13356), (3, 8308), (2, 3500), (1, 16069), (0, 4116), (-1, 325)]            
+>>> 
+>>> spark.sql("SELECT sensorid, cluster, count(*) AS num_outliers, avg(c_s) AS spdcntr, avg(dist) AS avgdist FROM sdk5 WHERE  dist > 20 GROUP BY sensorid, cluster ORDER BY sensorid, cluster").show()
++--------+-------+------------+------------------+------------------+           
+|sensorid|cluster|num_outliers|           spdcntr|           avgdist|
++--------+-------+------------+------------------+------------------+
+|     145|      0|          90|25.462783171521025| 34.37323976517285|
+|     145|      2|         235|12.273872511967742|29.329307238093424|
++--------+-------+------------+------------------+------------------+
+
+>>> spark.sql("SELECT cluster, doy, time, c_v,c_s,c_o, p_v,p_s,p_o FROM sdk5 WHERE cluster= 1 and dist >20 ORDER BY dist").show()
++-------+---+----+---+---+---+---+---+---+                                      
+|cluster|doy|time|c_v|c_s|c_o|p_v|p_s|p_o|
++-------+---+----+---+---+---+---+---+---+
++-------+---+----+---+---+---+---+---+---+
+
+>>> schema_sd = spark.createDataFrame(rdd_w_clusts_wnullclustk5, ('highway','sensorloc', 'sensorid', 'doy', 'dow', 'time','p_v','p_s','p_o', 'cluster', 'c_v','c_s','c_o','dist'))
+>>> schema_sd.createOrReplaceTempView("sdk5nc")
+>>> cdata=spark.sql("SELECT cluster, p_v, p_s, p_o FROM sdk5nc  ORDER BY cluster")
+>>> cdata.repartition(1).write.csv("k5clusts.csv", sep='|')
+
+Traceback (most recent call last):
+  File "/opt/cloudera/parcels/SPARK2-2.0.0.cloudera1-1.cdh5.7.0.p0.113931/lib/spark2/python/pyspark/sql/utils.py", line 63, in deco
+    return f(*a, **kw)
+  File "/opt/cloudera/parcels/SPARK2-2.0.0.cloudera1-1.cdh5.7.0.p0.113931/lib/spark2/python/lib/py4j-0.10.3-src.zip/py4j/protocol.py", line 319, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o599.csv.
+: org.apache.spark.sql.AnalysisException: path hdfs://babar.es.its.nyu.edu:8020/user/pa1230/k5clusts.csv already exists.;
+	at org.apache.spark.sql.execution.datasources.InsertIntoHadoopFsRelationCommand.run(InsertIntoHadoopFsRelationCommand.scala:88)
+	at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult$lzycompute(commands.scala:58)
+	at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult(commands.scala:56)
+	at org.apache.spark.sql.execution.command.ExecutedCommandExec.doExecute(commands.scala:74)
+	at org.apache.spark.sql.execution.SparkPlan$$anonfun$execute$1.apply(SparkPlan.scala:115)
+	at org.apache.spark.sql.execution.SparkPlan$$anonfun$execute$1.apply(SparkPlan.scala:115)
+	at org.apache.spark.sql.execution.SparkPlan$$anonfun$executeQuery$1.apply(SparkPlan.scala:136)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:133)
+	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:114)
+	at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:86)
+	at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:86)
+	at org.apache.spark.sql.execution.datasources.DataSource.write(DataSource.scala:525)
+	at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:211)
+	at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:194)
+	at org.apache.spark.sql.DataFrameWriter.csv(DataFrameWriter.scala:573)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:237)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:280)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/cloudera/parcels/SPARK2-2.0.0.cloudera1-1.cdh5.7.0.p0.113931/lib/spark2/python/pyspark/sql/readwriter.py", line 708, in csv
+    self._jwrite.csv(path)
+  File "/opt/cloudera/parcels/SPARK2-2.0.0.cloudera1-1.cdh5.7.0.p0.113931/lib/spark2/python/lib/py4j-0.10.3-src.zip/py4j/java_gateway.py", line 1133, in __call__
+  File "/opt/cloudera/parcels/SPARK2-2.0.0.cloudera1-1.cdh5.7.0.p0.113931/lib/spark2/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: 'path hdfs://babar.es.its.nyu.edu:8020/user/pa1230/k5clusts.csv already exists.;'
+>>> 
+>>> 
+>>> cdata.repartition(1).write.csv("myk5clusts.csv", sep='|')
+>>>                                                                             
+>>> 

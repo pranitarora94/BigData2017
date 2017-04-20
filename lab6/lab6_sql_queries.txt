@@ -1,0 +1,11 @@
+1. SELECT S.sname FROM sailors S 
+WHERE S.sid NOT IN (SELECT R.Sid FROM reserves R);
+
+2. SELECT DISTINCT S.sid FROM sailors S, boats B, reserves R
+WHERE S.sid = R.sid AND R.bid = B.bid AND B.color='red' AND S.sid NOT IN
+(SELECT S2.sid FROM sailors S2, boats B2, reserves R2
+WHERE S2.sid=R2.sid AND R2.bid=B2.bid AND B2.color='green'); 
+
+3. SELECT sname FROM sailors 
+WHERE rating > (SELECT MAX(rating) FROM sailors 
+WHERE sname ='Horatio');
